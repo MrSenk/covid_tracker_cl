@@ -3,14 +3,14 @@ import 'package:bezier_chart/bezier_chart.dart';
 import 'package:intl/intl.dart';
 
 class HistoricChart extends StatelessWidget {
-  final Map historicCountryData;
+  final Map historicData;
 
-  const HistoricChart({Key key, this.historicCountryData}) : super(key: key);
+  const HistoricChart({Key key, this.historicData}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     var list = [];
-    historicCountryData.forEach((key, value) {
+    historicData.forEach((key, value) {
       list.add(value);
     });
     final fromDate = DateTime(2020, 3, 7);

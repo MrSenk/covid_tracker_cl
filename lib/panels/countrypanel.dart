@@ -1,5 +1,6 @@
 import 'package:covid_chile/components/historicchart.dart';
 import 'package:flutter/material.dart';
+import 'package:covid_chile/datasource.dart';
 
 class CountryPanel extends StatelessWidget {
   final Map countryData;
@@ -20,7 +21,7 @@ class CountryPanel extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15.0),
         ),
-        color: Color(0xff222b45),
+        color: darkBlue,
         child: Column(
           children: <Widget>[
             Row(
@@ -29,7 +30,7 @@ class CountryPanel extends StatelessWidget {
                   padding: const EdgeInsets.all(10.0),
                   child: CircleAvatar(
                     radius: 14,
-                    backgroundColor: Color(0xfff2f6fC),
+                    backgroundColor: clearWhite,
                     child: CircleAvatar(
                       radius: 12,
                       backgroundImage: NetworkImage(
@@ -43,7 +44,7 @@ class CountryPanel extends StatelessWidget {
                   child: Text(
                     'Chile',
                     style: TextStyle(
-                        color: Color(0xfff2f6fC),
+                        color: clearWhite,
                         fontWeight: FontWeight.bold,
                         fontSize: 20.0),
                   ),
@@ -63,7 +64,7 @@ class CountryPanel extends StatelessWidget {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(15.0),
                 ),
-                color: Color(0xff1f273d),
+                color: darkerBlue,
                 child: Padding(
                   padding: const EdgeInsets.symmetric(
                     vertical: 20.0,
@@ -77,7 +78,7 @@ class CountryPanel extends StatelessWidget {
                           Text(
                             'Confirmados',
                             style: TextStyle(
-                              color: Color(0xffe59928),
+                              color: clearOrange,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -89,7 +90,7 @@ class CountryPanel extends StatelessWidget {
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 20.0,
-                              color: Color(0xfff2f6fC),
+                              color: clearWhite,
                             ),
                           )
                         ],
@@ -100,7 +101,7 @@ class CountryPanel extends StatelessWidget {
                           Text(
                             'Muertos',
                             style: TextStyle(
-                              color: Color(0xfff45051),
+                              color: clearRed,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -112,7 +113,7 @@ class CountryPanel extends StatelessWidget {
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 20.0,
-                              color: Color(0xfff2f6fC),
+                              color: clearWhite,
                             ),
                           )
                         ],
@@ -127,7 +128,7 @@ class CountryPanel extends StatelessWidget {
               width: MediaQuery.of(context).size.width * 0.9,
               padding: EdgeInsets.only(bottom: 20.0, right: 14.0, left: 14.0),
               child: HistoricChart(
-                historicCountryData: historicCountryData,
+                historicData: historicCountryData,
               ),
             ),
           ],
