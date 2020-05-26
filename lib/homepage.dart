@@ -3,6 +3,7 @@ import 'package:covid_chile/datasource.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:covid_chile/panels/countrypanel.dart';
+import 'package:flutter/services.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -59,6 +60,10 @@ class _HomePageState extends State<HomePage> {
     fetchRegionData();
     fetchHistoricRegionData();
     super.initState();
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
   }
 
   @override
