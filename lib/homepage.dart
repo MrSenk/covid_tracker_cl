@@ -63,11 +63,10 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: clearWhite,
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: MediaQuery.of(context).padding,
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: clearWhite,
+        body: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
@@ -136,52 +135,53 @@ class _HomePageState extends State<HomePage> {
                       countryData: countryData,
                       historicCountryData: historicCountryData,
                     ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 14.0),
-                child: Container(
-                  height: 30,
-                  child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: DataSource.regions.length,
-                      itemBuilder: (context, index) {
-                        return Padding(
-                          padding: const EdgeInsets.only(right: 10.0),
-                          child: ButtonTheme(
-                            minWidth: 50.0,
-                            child: FlatButton(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(15.0),
-                              ),
-                              onPressed: () {
-                                Map info = regionData[DataSource.regions[index]
-                                        ['id']
-                                    .toString()]['regionData'];
-                                List selectedRegionInfo = [];
-                                info.forEach((key, value) {
-                                  selectedRegionInfo.add(value);
-                                  selectedRegionInfo.add({
-                                    'order': DataSource.regions[index]['order'],
-                                    'name': DataSource.regions[index]['name']
-                                  });
+              Container(
+                height: 30,
+                child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: DataSource.regions.length,
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: const EdgeInsets.only(
+                          left: 5.0,
+                          right: 5.0,
+                        ),
+                        child: ButtonTheme(
+                          minWidth: 50.0,
+                          child: FlatButton(
+                            splashColor: Colors.blueAccent,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(15.0),
+                            ),
+                            onPressed: () {
+                              Map info = regionData[DataSource.regions[index]
+                                      ['id']
+                                  .toString()]['regionData'];
+                              List selectedRegionInfo = [];
+                              info.forEach((key, value) {
+                                selectedRegionInfo.add(value);
+                                selectedRegionInfo.add({
+                                  'order': DataSource.regions[index]['order'],
+                                  'name': DataSource.regions[index]['name']
                                 });
-                                setState(() {
-                                  selectedRegion = selectedRegionInfo;
-                                });
-                              },
-                              color: Colors.black45,
-                              child: Text(
-                                DataSource.regions[index]['order'],
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 15,
-                                  color: clearWhite,
-                                ),
+                              });
+                              setState(() {
+                                selectedRegion = selectedRegionInfo;
+                              });
+                            },
+                            color: Colors.blue,
+                            child: Text(
+                              DataSource.regions[index]['order'],
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 15,
+                                color: clearWhite,
                               ),
                             ),
                           ),
-                        );
-                      }),
-                ),
+                        ),
+                      );
+                    }),
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
