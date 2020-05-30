@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:covid_chile/panels/countrypanel.dart';
 import 'package:flutter/services.dart';
+import 'package:intl/intl.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -65,6 +66,8 @@ class _HomePageState extends State<HomePage> {
       DeviceOrientation.portraitDown,
     ]);
   }
+
+  final formatter = new NumberFormat('#,###');
 
   @override
   Widget build(BuildContext context) {
@@ -283,8 +286,7 @@ class _HomePageState extends State<HomePage> {
                                               height: 5.0,
                                             ),
                                             Text(
-                                              selectedRegion[0]['confirmed']
-                                                  .toString(),
+                                              formatter.format(selectedRegion[0]['confirmed']).replaceAll(',', '.'),
                                               style: TextStyle(
                                                 fontWeight: FontWeight.bold,
                                                 fontSize: 20.0,
@@ -308,8 +310,7 @@ class _HomePageState extends State<HomePage> {
                                               height: 5.0,
                                             ),
                                             Text(
-                                              selectedRegion[0]['deaths']
-                                                  .toString(),
+                                              formatter.format(selectedRegion[0]['deaths']).replaceAll(',', '.'),
                                               style: TextStyle(
                                                 fontWeight: FontWeight.bold,
                                                 fontSize: 20.0,

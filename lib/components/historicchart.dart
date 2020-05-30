@@ -20,8 +20,8 @@ class HistoricChart extends StatelessWidget {
     var formatter = new DateFormat('yyyy-MM-dd');
     for (var i = 0; i < list.length; i++) {
       if (i > 0) {
-        newCases = double.parse(list[i]['confirmed']) -
-            double.parse(list[i - 1]['confirmed']);
+        newCases = double.parse(list[i]['confirmed'].toString()) -
+            double.parse(list[i - 1]['confirmed'].toString());
         var dateTime = DateFormat('M/d/yyyy').parse(list[i]['day']);
         data.add(DataPoint<DateTime>(value: newCases, xAxis: dateTime));
         if (i == list.length - 1 && formatter.format(dateTime) != formatter.format(toDate.subtract(Duration(days: 1)))) {

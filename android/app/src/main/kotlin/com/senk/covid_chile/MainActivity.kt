@@ -1,4 +1,4 @@
-package com.example.covid_chile
+package com.senk.covid_chile
 
 import io.flutter.embedding.android.FlutterActivity
 

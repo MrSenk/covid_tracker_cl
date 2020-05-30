@@ -1,6 +1,7 @@
 import 'package:covid_chile/components/historicchart.dart';
 import 'package:flutter/material.dart';
 import 'package:covid_chile/datasource.dart';
+import 'package:intl/intl.dart';
 
 class CountryPanel extends StatelessWidget {
   final Map countryData;
@@ -10,6 +11,8 @@ class CountryPanel extends StatelessWidget {
       : super(key: key);
 
   static final fromDate = DateTime(2020, 3, 7);
+
+  static final formatter = new NumberFormat('#,###');
 
   static final toDate = DateTime.now();
 
@@ -86,7 +89,7 @@ class CountryPanel extends StatelessWidget {
                             height: 5.0,
                           ),
                           Text(
-                            countryData['confirmed'],
+                            formatter.format(countryData['confirmed']).replaceAll(',', '.'),
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 20.0,
@@ -109,7 +112,7 @@ class CountryPanel extends StatelessWidget {
                             height: 5.0,
                           ),
                           Text(
-                            countryData['deaths'],
+                            formatter.format(countryData['deaths']).replaceAll(',', '.'),
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 20.0,
